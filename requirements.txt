@@ -1,0 +1,5 @@
+# Core dependencies
+fastapi==0.115.0
+
+# Development and testing
+
