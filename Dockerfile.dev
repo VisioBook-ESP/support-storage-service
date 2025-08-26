@@ -1,0 +1,18 @@
+# Outils de formatage
+black
+isort
+
+# Linter
+flake8
+pylint
+
+# Typage
+mypy
+
+# Tests
+pytest
+pytest-asyncio
+httpx   # utile pour tester des endpoints FastAPI
+
+# Dev utils
+ipython
