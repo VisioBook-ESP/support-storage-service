@@ -43,7 +43,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/visiobook-esp/support-storage-service-dev:latest ./support-storage-service/docker
+          docker build -t ghcr.io/visiobook-esp/support-storage-service-dev:latest ./docker
 
       - name: Push Docker image
         run: |
