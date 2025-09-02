@@ -42,10 +42,12 @@ jobs:
           password: ${{ secrets.GITHUBTOKEN }}
 
       - name: Build Docker image
+        working-directory: docker
         run: |
-          docker build -t ghcr.io/visiobook-esp/support-storage-service-dev:latest ./docker
+          docker build -t ghcr.io/visiobook-esp/support-storage-service-dev:latest .
 
       - name: Push Docker image
+        working-directory: docker
         run: |
           docker push ghcr.io/visiobook-esp/support-storage-service-dev:latest
 
