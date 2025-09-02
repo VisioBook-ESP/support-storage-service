@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: support-storage-service-config
+data:
+  SERVICE_NAME: "support-storage-service"
+  LOG_LEVEL: "info"
+  API_GATEWAY_URL: "http://api-gateway-service:8080"

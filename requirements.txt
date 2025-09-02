@@ -1,5 +1,14 @@
 # Core dependencies
 fastapi==0.115.0
+uvicorn[standard]
 
 # Development and testing
 pytest==7.4.3
+pylint==3.3.8
+pytest-cov==6.2.1
+
+httptools==0.6.4
+uvloop==0.21.0
+watchfiles==1.1.0
+websockets==15.0.1
+
