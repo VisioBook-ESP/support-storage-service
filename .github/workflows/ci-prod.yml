@@ -1,5 +1,5 @@
-name: CI dev
-on: [push]
+name: CI prod
+on: [pull-request]
 
 jobs:
   lint:
@@ -9,7 +9,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install pylint black
-          pylint src/**
+          pylint src/mon_projet
           black --check src/
 
   test:
@@ -38,11 +38,11 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/visiobook-esp/support-storage-service-dev:latest ./support-storage-service/docker
+          docker build -t ghcr.io/visiobook-esp/support-storage-service:latest ./support-storage-service/docker
 
       - name: Push Docker image
         run: |
-          docker push ghcr.io/visiobook-esp/support-storage-service-dev:latest
+          docker push ghcr.io/visiobook-esp/support-storage-service:latest
 
 
 
