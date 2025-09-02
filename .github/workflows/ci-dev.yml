@@ -1,0 +1,48 @@
+name: CI dev
+on: [push]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Lint
+        run: |
+          pip install -r requirements.txt
+          pip install pylint black
+          pylint src/mon_projet
+          black --check src/
+
+  test:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Run Test
+        run: | 
+          pip install -r requirements.txt
+          pip install pytest
+          pytest --maxfail=1 --disable-warnings -q
+
+  docker-build-and-push:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUBTOKEN }}
+
+      - name: Build Docker image
+        run: |
+          docker build -t ghcr.io/visiobook-esp/support-storage-service-dev:latest ./support-storage-service/docker
+
+      - name: Push Docker image
+        run: |
+          docker push ghcr.io/visiobook-esp/support-storage-service-dev:latest
+
+
+
