@@ -7,6 +7,7 @@ jobs:
     steps:
       - name: Run Lint
         run: |
+          pwd
           pip install -r requirements.txt
           pip install pylint black
           pylint src/**
