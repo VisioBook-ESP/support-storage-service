@@ -7,7 +7,7 @@ services:
       dockerfile: docker/Dockerfile
     container_name: support-storage-service
     ports:
-      - "8080:8080"
+      - "8090:8080"
     volumes:
       - .:/app
     environment:
