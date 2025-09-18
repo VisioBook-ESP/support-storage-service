@@ -1,11 +1,13 @@
+"""
+Module principal de l'application Support Storage Service.
+
+Ce module initialise l'application FastAPI et inclut les routers des handlers.
+"""
+
 from fastapi import FastAPI
-from handlers.health import router as health_router
+from src.handlers import storage
 
-app = FastAPI()
+app = FastAPI(title="Support Storage Service")
 
-@app.get("/")
-def read_root():
-    return {"message": "Hello World"}
-
-app.include_router(health_router)
+app.include_router(storage.router)
 
