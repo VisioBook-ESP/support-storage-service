@@ -38,7 +38,7 @@ jobs:
           python -m pip install -U pip
           pip install -r requirements.txt
       - name: Black (format check)
-        run: black --check app
+        run: black --check src
 
   sorting-imports-check:
     runs-on: ubuntu-latest
@@ -61,7 +61,7 @@ jobs:
           python -m pip install -U pip
           pip install -r requirements.txt
       - name: isort (import order check)
-        run: isort --check-only app
+        run: isort --check-only src
 
   pylint-check:
     runs-on: ubuntu-latest
@@ -84,7 +84,7 @@ jobs:
           python -m pip install -U pip
           pip install -r requirements.txt
       - name: Pylint
-        run: pylint app
+        run: pylint src
 
   types-check:
     runs-on: ubuntu-latest
@@ -107,7 +107,7 @@ jobs:
           python -m pip install -U pip
           pip install -r requirements.txt
       - name: Mypy (type check)
-        run: mypy app
+        run: mypy src
 
   no-debug-leftovers:
     runs-on: ubuntu-latest
@@ -124,7 +124,7 @@ jobs:
             echo "::error:: Python debug statements found outside ./.tests/unit/ (see matches above)." >&2
             exit 1
           fi
-          echo "✅ No debug leftovers outside ./.tests/unit/"
+          echo "----- No debug leftovers outside ./.tests/unit/"
 
   # TODO: Réactiver quand les tests seront écrits
   docker-compose-and-unitests:
