@@ -25,8 +25,8 @@ pytest-asyncio
 httpx   # pour tester ton API FastAPI/Starlette
 
 # Linting / formatting / type checking
-black
-isort
+black==24.0.0
+isort==5.12.0
 mypy
 pylint
 
