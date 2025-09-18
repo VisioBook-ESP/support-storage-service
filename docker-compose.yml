@@ -12,3 +12,22 @@ services:
       - .:/app
     environment:
       - PYTHONUNBUFFERED=1
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/appdb
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14
+    container_name: support-storage-db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=appdb
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
