@@ -27,8 +27,9 @@ httpx   # pour tester ton API FastAPI/Starlette
 # Linting / formatting / type checking
 black==24.0.0
 isort==5.12.0
-mypy
-pylint
+mypy==1.5.1
+pylint==2.18.0
+
 
 # Security checks
 bandit

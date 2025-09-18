@@ -24,7 +24,7 @@ WORKDIR /app
 RUN addgroup --system appgroup && adduser --system --uid 1001 --ingroup appgroup appuser
 
 COPY --from=builder /venv /venv
-COPY --from=builder /app/app ./app
+COPY --from=builder /app/src ./src
 
 ENV PATH=/venv/bin:$PATH \
     PYTHONPATH=/app
