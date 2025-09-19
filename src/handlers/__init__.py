@@ -1,2 +1,0 @@
-def storage():
-    return None
