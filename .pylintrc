@@ -1,0 +1,13 @@
+[MASTER]
+ignore = migrations,venv
+
+[MESSAGES CONTROL]
+disable =
+    missing-module-docstring,
+    missing-function-docstring,
+    missing-class-docstring,
+    unused-argument,
+    no-member  # désactive les faux positifs sur FastAPI
+
+[FORMAT]
+max-line-length=100
