@@ -4,8 +4,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from src.app import app
-from tests.mocks.external_services import (mock_database_service,
-                                           mock_storage_service)
+from tests.mocks.external_services import mock_database_service, mock_storage_service
 
 
 # Fixture pytest pour injecter les mocks
