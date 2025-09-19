@@ -1,0 +1,14 @@
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "I", "B", "C", "D", "RUF"]
+ignore = []
+exclude = ["venv", ".git", "__pycache__"]
+
+[tool.ruff.imports]
+# Configuration du tri des imports
+force-single-line = false
+order-by-type = true
+combine-as-imports = true
+sections = ["STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+default-section = "THIRDPARTY"
+known-first-party = ["src"]
