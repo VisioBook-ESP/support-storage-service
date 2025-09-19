@@ -4,10 +4,10 @@ select = ["E", "F", "I", "B", "C", "D", "RUF"]
 ignore = []
 exclude = ["venv", ".git", "__pycache__"]
 
-# Gestion des imports
+[tool.ruff.imports]
 order-by-type = true
 sections = ["STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
-known-first-party = ["src"]
+
 
 
 
