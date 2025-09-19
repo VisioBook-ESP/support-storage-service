@@ -9,9 +9,10 @@ from tests.mocks.external_services import mock_database_service, mock_storage_se
 
 # Fixture pytest pour injecter les mocks
 @pytest.fixture
-def override_dependencies(monkeypatch: Any) -> bool:
+def override_dependencies(monkeypatch: Any) -> None:
     """
-    Patch les dépendances pour utiliser les services mockés.
+    Patch les fonctions get_database_service et get_storage_service
+    avec les mocks.
     """
     monkeypatch.setattr(
         "src.app.dependencies.get_database_service",
@@ -21,15 +22,16 @@ def override_dependencies(monkeypatch: Any) -> bool:
         "src.app.dependencies.get_storage_service",
         lambda: mock_storage_service,
     )
-    return True
 
 
 # Test client pour interagir avec l'app FastAPI
-client: TestClient = TestClient(app)
+client = TestClient(app)
 
 
-def test_upload_file(override_dependencies) -> None:
-    # Ne pas utiliser override_dependencies comme nom de variable à l'intérieur
+def test_upload_file(override_dependencies: Any) -> None:
+    """
+    Teste l'endpoint POST /upload en utilisant les services mockés.
+    """
     response = client.post(
         "/upload",
         files={"file": ("test.txt", b"test content")},
