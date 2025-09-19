@@ -3,7 +3,9 @@ from unittest.mock import AsyncMock, MagicMock
 # Mock base de données
 mock_database_service = MagicMock()
 mock_database_service.get_connection = AsyncMock(return_value="mock_connection")
-mock_database_service.execute_query = AsyncMock(return_value=[{"id": 1, "name": "test"}])
+mock_database_service.execute_query = AsyncMock(
+    return_value=[{"id": 1, "name": "test"}]
+)
 mock_database_service.transaction = AsyncMock(return_value=None)
 
 # Mock stockage (fichiers)

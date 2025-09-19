@@ -37,7 +37,7 @@ async def health_check(response: Response):
     checks = {
         "database": await check_database(),
         "redis": await check_redis(),
-        "externalServices": await check_external_services()
+        "externalServices": await check_external_services(),
     }
     is_healthy = all(c["status"] == "UP" for c in checks.values())
 
@@ -46,8 +46,10 @@ async def health_check(response: Response):
         "timestamp": datetime.datetime.utcnow().isoformat(),
         "service": os.getenv("SERVICE_NAME", "my-service"),
         "version": os.getenv("SERVICE_VERSION", "1.0.0"),
-        "checks": checks
+        "checks": checks,
     }
 
-    response.status_code = status.HTTP_200_OK if is_healthy else status.HTTP_503_SERVICE_UNAVAILABLE
+    response.status_code = (
+        status.HTTP_200_OK if is_healthy else status.HTTP_503_SERVICE_UNAVAILABLE
+    )
     return health
