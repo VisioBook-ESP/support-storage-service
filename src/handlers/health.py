@@ -11,23 +11,23 @@ from fastapi import APIRouter, Response, status
 router = APIRouter()
 
 
-async def check_database():
+async def check_database() -> dict[str, str]:
     """Vérifie la connectivité avec la base de données."""
     return {"status": "UP", "details": "Database reachable"}
 
 
-async def check_redis():
+async def check_redis() -> dict[str, str]:
     """Vérifie la connectivité avec Redis."""
     return {"status": "UP", "details": "Redis OK"}
 
 
-async def check_external_services():
+async def check_external_services() -> dict[str, str]:
     """Vérifie la disponibilité des services externes."""
     return {"status": "DOWN", "details": "API externe non disponible"}
 
 
 @router.get("/health")
-async def health_check(response: Response):
+async def health_check(response: Response) -> dict:
     """
     Endpoint pour vérifier l'état de santé global de l'application.
 

@@ -2,6 +2,7 @@ from fastapi import APIRouter
 
 router = APIRouter()
 
+
 @router.get("/items")
-async def read_items():
+async def read_items() -> dict[str, list]:
     return {"items": []}
