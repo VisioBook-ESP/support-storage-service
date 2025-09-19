@@ -26,3 +26,12 @@ def override_dependencies(monkeypatch: Any) -> None:
 
 # Test client pour interagir avec l'app FastAPI
 client = TestClient(app)
+
+
+def test_two_plus_two_equals_four() -> None:
+    """Test unitaire simple : 2 + 2 = 4."""
+    result = 2 + 2
+    assert result == 4
+    assert result > 3
+    assert result < 5
+    assert isinstance(result, int)
