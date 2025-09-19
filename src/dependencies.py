@@ -9,6 +9,7 @@ def get_database_service():
     if os.getenv("APP_ENV") == "test":
         try:
             from tests.mocks.external_services import mock_database_service
+
             return mock_database_service
         except ImportError:
             pass
@@ -22,6 +23,7 @@ def get_storage_service():
     if os.getenv("APP_ENV") == "test":
         try:
             from tests.mocks.external_services import mock_storage_service
+
             return mock_storage_service
         except ImportError:
             pass

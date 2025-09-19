@@ -12,8 +12,7 @@ async def read_items() -> dict[str, list]:
 
 @router.post("/upload")
 async def upload_file(
-    file: UploadFile = File(...),
-    storage_service=Depends(get_storage_service)
+    file: UploadFile = File(...), storage_service=Depends(get_storage_service)
 ) -> dict[str, str]:
     """Upload a file and return its URL."""
     # Use the storage service to upload the file

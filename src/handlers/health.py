@@ -4,7 +4,6 @@ Module contenant l'endpoint de health check pour l'application.
 Fournit l'état de santé des services internes et externes.
 """
 
-
 import datetime
 import os
 
