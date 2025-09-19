@@ -35,3 +35,5 @@ def test_two_plus_two_equals_four() -> None:
     assert result > 3
     assert result < 5
     assert isinstance(result, int)
+
+
