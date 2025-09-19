@@ -1,9 +1,10 @@
 """Dependencies for the application."""
 
 import os
+from typing import Any
 
 
-def get_database_service():
+def get_database_service() -> Any | None:
     """Get database service instance."""
     # For now, return a mock or placeholder
     if os.getenv("APP_ENV") == "test":
@@ -17,7 +18,7 @@ def get_database_service():
     return None
 
 
-def get_storage_service():
+def get_storage_service() -> Any | None:
     """Get storage service instance."""
     # For now, return a mock or placeholder
     if os.getenv("APP_ENV") == "test":

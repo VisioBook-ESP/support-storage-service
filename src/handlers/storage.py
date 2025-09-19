@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, File, UploadFile
+from typing import Any
 
 from src.dependencies import get_storage_service
 
@@ -16,7 +17,7 @@ async def read_items() -> dict[str, list]:
 
 @router.post("/upload")
 async def upload_file(
-    file: UploadFile = file_dependency, storage_service=storage_service_dependency
+    file: UploadFile = file_dependency, storage_service: Any = storage_service_dependency
 ) -> dict[str, str]:
     """Upload a file and return its URL."""
     # Use the storage service to upload the file
