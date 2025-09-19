@@ -2,7 +2,8 @@ import pytest
 from fastapi.testclient import TestClient
 
 from src.app import app
-from tests.mocks.external_services import mock_database_service, mock_storage_service
+from tests.mocks.external_services import (mock_database_service,
+                                           mock_storage_service)
 
 
 # Fixture pytest pour injecter les mocks
@@ -24,7 +25,7 @@ def override_dependencies(monkeypatch):
 client = TestClient(app)
 
 
-def test_upload_file(override_dependencies):
+def test_upload_file(override_dependencies) -> None:
     """
     Teste l'endpoint POST /upload en utilisant les services mockés.
     """
