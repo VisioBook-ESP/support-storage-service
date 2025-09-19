@@ -29,7 +29,7 @@ black==24.1.1
 ruff==0.13.1
 mypy==1.5.1
 pylint==3.3.8
-astroid== 3.3.11
+astroid==3.3.11
 
 
 
