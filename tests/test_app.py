@@ -28,10 +28,8 @@ def override_dependencies(monkeypatch: Any) -> bool:
 client: TestClient = TestClient(app)
 
 
-def test_upload_file(override_dependencies: bool) -> None:
-    """
-    Teste l'endpoint POST /upload en utilisant les services mockés.
-    """
+def test_upload_file(override_dependencies) -> None:
+    # Ne pas utiliser override_dependencies comme nom de variable à l'intérieur
     response = client.post(
         "/upload",
         files={"file": ("test.txt", b"test content")},
