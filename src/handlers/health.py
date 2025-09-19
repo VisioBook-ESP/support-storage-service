@@ -1,7 +1,9 @@
 """
 Module contenant l'endpoint de health check pour l'application.
+
 Fournit l'état de santé des services internes et externes.
 """
+
 
 import datetime
 import os
@@ -31,8 +33,9 @@ async def health_check(response: Response) -> dict:
     """
     Endpoint pour vérifier l'état de santé global de l'application.
 
-    Retourne un JSON contenant l'état de la base de données, Redis et des services externes,
-    ainsi qu'un status global, un timestamp et les informations de version/service.
+    Retourne un JSON contenant l'état de la base de données, Redis et des
+    services externes, ainsi qu'un status global, un timestamp et les
+    informations de version/service.
     """
     checks = {
         "database": await check_database(),

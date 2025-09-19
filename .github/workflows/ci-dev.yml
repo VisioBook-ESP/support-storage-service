@@ -87,7 +87,7 @@ jobs:
       - name: Build test services
         run: docker compose -f docker-compose-prod.yml up --build -d
       - name: Run tests inside container
-        run: docker compose exec -T web pytest --cov=src --cov-report=term-missing --cov-fail-under=0
+        run: docker compose exec -T user-service pytest --cov=src --cov-report=term-missing --cov-fail-under=0
 
   docker-build-and-push:
     runs-on: ubuntu-latest
