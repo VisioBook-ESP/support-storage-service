@@ -4,13 +4,6 @@ select = ["E", "F", "I", "B", "C", "D", "RUF"]
 ignore = []
 exclude = ["venv", ".git", "__pycache__"]
 
-[tool.ruff.imports]
-order-by-type = true
-sections = ["STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
-
-
-
-
 [tool.poetry.dependencies]
 python = "^3.12"
 pylint = ">=3.2,<3.3"
