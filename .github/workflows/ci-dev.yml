@@ -86,8 +86,6 @@ jobs:
           EOF
       - name: Build test services
         run: docker compose -f docker-compose-prod.yml up --build -d
-      - name: Wait for PostgreSQL
-        run: bash ./scripts/wait-for-db.sh
       - name: Run tests inside container
         run: docker compose exec -T web pytest --cov=src --cov-report=term-missing --cov-fail-under=0
 
