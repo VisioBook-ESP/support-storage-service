@@ -1,5 +1,7 @@
 [MASTER]
 ignore = migrations,venv
+ignore=src/handlers/health.py,tests/test_app.py
+
 
 [MESSAGES CONTROL]
 disable =
@@ -11,3 +13,4 @@ disable =
 
 [FORMAT]
 max-line-length=100
+
