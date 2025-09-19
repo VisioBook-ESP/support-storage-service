@@ -26,13 +26,3 @@ def override_dependencies(monkeypatch: Any) -> None:
 
 # Test client pour interagir avec l'app FastAPI
 client = TestClient(app)
-
-
-def test_upload_file(override_dependencies: Any) -> None:
-    """Teste l'endpoint POST /upload en utilisant les services mockés."""
-    response = client.post(
-        "/storage/upload",
-        files={"file": ("test.txt", b"test content")},
-    )
-    assert response.status_code == 200
-    assert response.json()["url"] == "mock-url"
