@@ -31,8 +31,8 @@ jobs:
           pip install black isort
       - name: Black formatting check
         run: black --check src tests
-#      - name: isort import order check
-#        run: isort --check-only src tests
+      - name: isort import order check
+        run: isort --check-only src tests
 
 #  lint-check:
 #    runs-on: ubuntu-latest
