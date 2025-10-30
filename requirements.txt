@@ -14,6 +14,10 @@ python-json-logger==2.*
 PyJWT==2.*
 passlib[bcrypt]==1.*
 
+# Database & Cache
+asyncpg==0.29.*
+redis==5.0.*
+
 
 # Monitoring / metrics
 prometheus-client==0.*
@@ -26,9 +30,11 @@ httpx   # pour tester ton API FastAPI/Starlette
 
 # Linting / formatting / type checking
 black==24.1.1
-isort==5.12.0
+ruff==0.13.1
 mypy==1.5.1
-pylint==2.17.7
+pylint==3.3.8
+astroid==3.3.11
+
 
 
 # Security checks

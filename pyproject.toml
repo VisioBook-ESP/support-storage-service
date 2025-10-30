@@ -1,0 +1,12 @@
+[tool.ruff]
+line-length = 88
+exclude = ["venv", ".git", "__pycache__"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "C", "D", "RUF"]
+ignore = ["D100", "D104", "D103", "D203", "D211", "D212", "D213"]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pylint = ">=3.2,<3.3"
+astroid = ">=3.2,<3.3"
