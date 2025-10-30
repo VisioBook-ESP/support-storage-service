@@ -1,16 +1,15 @@
 """
 Module contenant l'endpoint de health check pour l'application.
+
 Fournit l'état de santé des services internes et externes.
 """
 
 import datetime
 import os
-import asyncio
-from typing import Optional
 
-from fastapi import APIRouter, Response, status
-import redis.asyncio as redis
 import asyncpg
+import redis
+from fastapi import APIRouter, Response, status
 
 from src.dependencies import get_database_service
 
@@ -22,7 +21,7 @@ async def check_database() -> dict[str, str]:
     try:
         # Utiliser la vraie connexion à la base de données
         db_service = get_database_service()
-        if db_service and hasattr(db_service, 'get_connection'):
+        if db_service and hasattr(db_service, "get_connection"):
             connection = await db_service.get_connection()
             if connection:
                 # Test simple de connectivité
@@ -36,7 +35,7 @@ async def check_database() -> dict[str, str]:
             return {"status": "UP", "details": "Database connection successful"}
         return {"status": "UP", "details": "Database reachable (mock)"}
     except Exception as e:
-        return {"status": "DOWN", "details": f"Database connection failed: {str(e)}"}
+        return {"status": "DOWN", "details": f"Database connection failed: {e!s}"}
 
 
 async def check_redis() -> dict[str, str]:
@@ -48,7 +47,7 @@ async def check_redis() -> dict[str, str]:
         await r.close()
         return {"status": "UP", "details": "Redis connection successful"}
     except Exception as e:
-        return {"status": "DOWN", "details": f"Redis connection failed: {str(e)}"}
+        return {"status": "DOWN", "details": f"Redis connection failed: {e!s}"}
 
 
 async def check_external_services() -> dict[str, str]:
@@ -62,7 +61,7 @@ async def check_external_services() -> dict[str, str]:
         #     return {"status": "UP", "details": "External services available"}
         return {"status": "UP", "details": "External services available (mock)"}
     except Exception as e:
-        return {"status": "DOWN", "details": f"External services unavailable: {str(e)}"}
+        return {"status": "DOWN", "details": f"External services unavailable: {e!s}"}
 
 
 @router.get("/health")
