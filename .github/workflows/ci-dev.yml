@@ -132,7 +132,7 @@ jobs:
           images: ${{ env.IMAGE_NAME }}
           tags: |
             type=sha
-            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev' }}
+            latest
       - name: Build and push prod image
         uses: docker/build-push-action@v6
         with:
