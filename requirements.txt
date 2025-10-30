@@ -14,6 +14,10 @@ python-json-logger==2.*
 PyJWT==2.*
 passlib[bcrypt]==1.*
 
+# Database & Cache
+asyncpg==0.29.*
+redis==5.0.*
+
 
 # Monitoring / metrics
 prometheus-client==0.*
