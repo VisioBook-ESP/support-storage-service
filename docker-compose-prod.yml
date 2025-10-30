@@ -5,12 +5,11 @@ services:
       dockerfile: docker/Dockerfile.prod
     image: support-storage-service:prod
     container_name: support-storage-service
-    env_file: .env # Optionnel - seulement en développement local
+    env_file: .env
     environment:
       - PYTHONPATH=/app
       - PYTHONUNBUFFERED=1
       - DATABASE_URL=postgresql://test_user:test_password@postgres:5432/test_db
-      - REDIS_URL=redis://redis:6379
     ports:
       - "8080:8080"
     volumes:
@@ -29,8 +28,8 @@ services:
     image: postgres:15-alpine
     environment:
       POSTGRES_DB: test_db
-      POSTGRES_USER: test_user
-      POSTGRES_PASSWORD: test_password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
     healthcheck:
