@@ -5,6 +5,7 @@ from typing import Any, Optional
 
 import asyncpg
 
+
 class DatabaseService:
     """Service pour gérer les connexions à la base de données."""
 

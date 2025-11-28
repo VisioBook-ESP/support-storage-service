@@ -7,12 +7,10 @@ Fournit l'état de santé des services internes et externes.
 import datetime
 import os
 
-import asyncpg
 from fastapi import APIRouter, Response, status
 
-from src.dependencies import get_database_service
-
 router = APIRouter()
+
 
 @router.get("/health")
 async def health_check(response: Response) -> dict:

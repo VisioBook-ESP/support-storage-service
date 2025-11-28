@@ -10,6 +10,9 @@ COPY requirements.txt .
 # installer les dépendances
 RUN pip install --no-cache-dir -r requirements.txt
 
+# installer ping et curl
+RUN apt-get update && apt-get install -y iputils-ping curl && rm -rf /var/lib/apt/lists/*
+
 # copier le reste du code
 COPY ./src .
 
