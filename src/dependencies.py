@@ -5,23 +5,19 @@ from typing import Any, Optional
 
 import asyncpg
 
-
 class DatabaseService:
     """Service pour gérer les connexions à la base de données."""
 
     def __init__(self, database_url: str):
-        """Initialize the database service with the given URL."""
         self.database_url = database_url
         self._pool: Optional[asyncpg.Pool] = None
 
     async def get_connection(self) -> asyncpg.Connection:
-        """Obtient une connexion à la base de données."""
         if not self._pool:
             self._pool = await asyncpg.create_pool(self.database_url)
         return await self._pool.acquire()
 
     async def close(self) -> None:
-        """Ferme le pool de connexions."""
         if self._pool:
             await self._pool.close()
 
