@@ -104,7 +104,7 @@ jobs:
         run : docker compose -f docker-compose.yml up --build -d
 
       - name: Run unit tests
-        run: docker exec support-storage-service pytest tests/ --cov=src --cov-report=term-missing --cov-fail-under=10
+        run: docker exec support-storage-service pytest tests/ --cov=src --cov-report=term-missing --cov-fail-under=80
 
 
   docker-build-and-push:
