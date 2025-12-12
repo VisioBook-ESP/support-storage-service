@@ -38,3 +38,10 @@ jobs:
           terraform validate
           terraform plan 
           terraform apply -auto-approve
+
+      - name: Get SAS token
+        id: get_sas
+        working-directory: terraform
+        run: |
+          SAS=$(terraform output -raw curl_sas_command | sed -E 's/.*\?\??(.*)"/\1/')
+          echo $SAS 
