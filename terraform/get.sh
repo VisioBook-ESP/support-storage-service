@@ -1,5 +1,5 @@
 # Get the SAS token directly from Terraform output
-TOKEN="$(terraform output -raw curl_sas_command | sed -E 's/.*\?\??(.*)"/\1/')"
+TOKEN="a trouver dans la ci"
 
 # Base URL
 URL="https://blobpourcamille.blob.core.windows.net/tf-container"
