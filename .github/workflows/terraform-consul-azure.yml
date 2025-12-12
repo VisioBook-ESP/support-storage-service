@@ -3,6 +3,7 @@ name: Run Terraform for Consul + Azure
 on:
   workflow_dispatch:   # Permet de lancer manuellement
 
+  pull_request:
 jobs:
   terraform:
     name: Apply Terraform
