@@ -1,0 +1,31 @@
+name: Run delete Blob (manual)
+
+on:
+  workflow_dispatch:   # Permet de lancer manuellement
+
+jobs:
+
+  terraform-destroy-blob:
+    env:
+      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+    runs-on: self-hosted
+    if: always()
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.7
+
+      - name: Destroy VM
+        working-directory: terraform
+        run: |
+          ls
+          terraform init -backend-config="path=terraform/${{ github.actor }}/blob"
+          terraform destroy  -auto-approve 
