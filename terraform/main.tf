@@ -71,6 +71,7 @@ output "container_name" {
 }
 
 output "curl_sas_command" {
+  sensitive = true
   value       = "curl \"https://${azurerm_storage_account.storage.name}.blob.core.windows.net/${azurerm_storage_container.container.name}?${data.azurerm_storage_account_blob_container_sas.container_sas.sas}\""
   description = "Curl command including the SAS token to access the private container"
 }
